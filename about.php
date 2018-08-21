@@ -17,5 +17,4 @@
 				</article>
 			</div>
 		</section>
-<p>wooooohooooooo</p>
 	<?php include ("footer.php"); ?>
