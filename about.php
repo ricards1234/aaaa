@@ -13,7 +13,6 @@
 
 					<?php } ?>
 					
-
 				</article>
 			</div>
 		</section>

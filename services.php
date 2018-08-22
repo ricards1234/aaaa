@@ -1,3 +1,49 @@
+<?php
+
+	if($input->post->nosutit){ //Noskaidro vai reģ forma tiek iesniegta
+		$email = $sanitizer->email($input->post->Email);
+		$pass = $sanitizer->text($input->post->Passw);
+
+
+        if($email) {
+
+            $replace =array("@", ".", "_");
+            $m = str_replace($replace, "-", $email); // mainīgaja $email visus aizliegtos simbolus aizvietojam ar -
+            $username = $sanitizer->selectorValue($m); //Pārbauda vai tomēr vēl nav palikuši kādi aizliegtie simboli
+
+            $find = $pages->get("name=$username"); //sameklējam starp visām lapām kur vārds ir username
+
+            if($session->login($find, $pass)) { //Pārbaudām vai lietotājvārds atbilst parolei
+            
+            $link = $pages->get('/lietotaji/')->url; //Atrodam lapas adresi, lai varētu jaunno lietotāju nosūtīt uz to
+            $session->redirect($link);
+
+            	// echo 'ja, tika';
+
+            }// } else {
+            // 	echo 'netika';
+            // }
+        }
+	
+	}
+
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		<?php include ("header.php"); ?>
 
 		<section id="main"> 
@@ -18,29 +64,28 @@
 						</ul>
 
 				</article>
-
-				<!-- Formas būvēšana pasūtīšanai -->
-
 				<aside id="sidebar"> 
 					<div class="dark"> <!-- globālais stils dark-->
 					  <h3>Pierakstīties sistēmā</h3>
-					  <form class="quote" id="forma" action="http://naivist.net/form/" method="post" onsubmit="return checkforblank()">
+					  <form class="quote" id="forma" action="" method="post">
 
 						<div>
 							<label>Ēpasta adrese</label><br>
-							<input type="text" placeholder="Ēpasts" id="email">
+							<input type="text" id="email" placeholder="Epasts" name="Email" maxlength="254" required>
 						</div>
 						<div>
 							<label>Parole</label><br>
-							<input type="text" placeholder="Parole" id="vards">
+							<input type="password" placeholder="Parole" id="parole"  name="Passw" minlength="6" required>
 						</div>
 
-						<button class="button_1" type="Submit" onclick=" checkRange()" >Iesniegt</button> 
+						<input type="submit" value="autentificēties" name="nosutit">
 					</form>
 					</div>
-						<button type="button"> Reģistrēties </button>
+						<button><a href="<?=$pages->get('/registresanas/')->url ?>">Reģistrēšanās</a></button>
 
 				</aside>
 
 			</div>
 		</section>
+
+	<?php include ("footer.php"); ?>
