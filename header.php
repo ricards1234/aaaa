@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width"> <!--Pieskaņojam lapu atbilstošai ieīcei uz kā tā tiks attēlota-->
+		<meta name="viewport" content="width=device-width"> 
 		<meta name="description" content="LU DF 1.Kursa students">
 		<meta name="keywords" content="Students">   
 		<meta name="author" content="Ričards Dišleris rd17018">
@@ -24,9 +24,7 @@
 							<li>
 								<a href="<?=$child->url?>"><?=$child->title?></a>
 							</li>
-							<?php endforeach; ?>
-						<!-- <li><a href="about.html">Par Mūsu blogu</a></li> 
-						<li class="current" ><a href="services.html">Pierakstīties</a></li> --> <!--Nomainam current jo esam tagad šajā lapā-->
+						<?php endforeach; ?>
 					</ul>
 				</nav>
 			</div>

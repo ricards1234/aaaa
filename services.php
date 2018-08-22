@@ -18,7 +18,8 @@
 						</ul>
 
 				</article>
-
+				<?php echo $page . "<br>"?>
+				<?php echo $page->id . "<br>"?>
 				<!-- Formas būvēšana pasūtīšanai -->
 
 				<aside id="sidebar"> 
@@ -38,9 +39,11 @@
 						<button class="button_1" type="Submit" onclick=" checkRange()" >Iesniegt</button> 
 					</form>
 					</div>
-						<button type="button"> Reģistrēties </button>
+						<button><a href="<?=$pages->get('/registresanas/')->url ?>">Reģistrēšanās</a></button>
 
 				</aside>
 
 			</div>
 		</section>
+
+	<?php include ("footer.php"); ?>
